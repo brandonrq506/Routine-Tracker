@@ -1,6 +1,7 @@
 import ItemsProvider from './store/ItemsProvider'
 import NewToDo from "./components/NewToDo/NewToDo";
 import TodoList from './components/TodoList/TodoList';
+import Timer from './components/Timer/Timer';
 
 const App = () => {
     return (
@@ -8,6 +9,7 @@ const App = () => {
             <ItemsProvider>
                 <NewToDo />
                 <TodoList />
+                <Timer />
             </ItemsProvider>
         </>
     );
@@ -30,6 +32,11 @@ avgTime: Average Time to perform the activity.
 
 Once a Task is submitted, we should have a list displaying all the items in the to-do list.
 Each Task should have an option to edit or delete. When click on editing, a 'editing form' should appear allowing the user to change the activity name, must include all verification to ensure only valid inputs are recevied.
+
+When there are no tasks in the To-Do array, the timer only shows that there is nothing.
+When there is 1 task in the To-Do array, the timer shows the task but shows nothing is next
+When there are 2 or more tasks in the To-Do array, the timer shows the task and the next task in queue.
+
 
 When a task is put in the 'done' array, it will have the name, category, avgTime, and the total duration between start and finish time. (May include a 'result' property based on whether we finised the task with time to spare, at time or late)
 

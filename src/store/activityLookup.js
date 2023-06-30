@@ -7,17 +7,17 @@ const activityLookup = [
     {
         name: 'angular:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'bae',
         category: 'necessary',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'barbara',
         category: 'necessary',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'bathroom',
@@ -47,22 +47,22 @@ const activityLookup = [
     {
         name: 'ce:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'chatgpt',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'chess',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'chores',
         category: 'wellness',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'coffee',
@@ -72,12 +72,12 @@ const activityLookup = [
     {
         name: 'cooking',
         category: 'necessary',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'daily',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'dinner',
@@ -92,22 +92,22 @@ const activityLookup = [
     {
         name: 'duolingo',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'dw:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'gad:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'green seals',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'groceries',
@@ -127,12 +127,12 @@ const activityLookup = [
     {
         name: 'md:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'pbi:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'plants',
@@ -142,7 +142,7 @@ const activityLookup = [
     {
         name: 'portuguese',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'post-workout',
@@ -157,32 +157,32 @@ const activityLookup = [
     {
         name: 'procrastinate',
         category: 'procrastination',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'programming',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'react:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'read',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'reply',
         category: 'necessary',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'research:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'shave',
@@ -197,7 +197,7 @@ const activityLookup = [
     {
         name: 'sleep',
         category: 'procrastination',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'snack',
@@ -207,7 +207,7 @@ const activityLookup = [
     {
         name: 'sp:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'stretch',
@@ -217,17 +217,17 @@ const activityLookup = [
     {
         name: 'swimming',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'tcu',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'transport',
         category: 'necessary',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'trash',
@@ -237,17 +237,17 @@ const activityLookup = [
     {
         name: 'typescript:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'uber',
         category: 'necessary',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'vir:',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'wash clothes',
@@ -267,12 +267,12 @@ const activityLookup = [
     {
         name: 'work',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     },
     {
         name: 'workout',
         category: 'productive',
-        avgTime: null,
+        avgTime: undefined,
     }
 ]
 

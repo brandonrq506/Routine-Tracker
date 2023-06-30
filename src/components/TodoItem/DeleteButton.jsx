@@ -1,12 +1,7 @@
 import PropTypes from 'prop-types'
 // import styles from './DeleteButton.module.css';
-import { useContext } from "react";
-import ItemsContext from '../../store/itemsContext'
 
-const DeleteButton = ({ itemId }) => {
-    const { removeToDo } = useContext(ItemsContext);
-
-    const onDelete = () => removeToDo(itemId);
+const DeleteButton = ({ onDelete }) => {
 
     return (
         <button onClick={onDelete}>
@@ -16,7 +11,7 @@ const DeleteButton = ({ itemId }) => {
 };
 
 DeleteButton.propTypes = {
-    itemId: PropTypes.string.isRequired,
+    onDelete: PropTypes.func.isRequired,
 };
 
 export default DeleteButton;

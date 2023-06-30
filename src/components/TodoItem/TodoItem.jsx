@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types'
 import styles from './TodoItem.module.css';
-import DeleteButton from './DeleteButton';
 
-const TodoItem = ({ toDo }) => {
+const TodoItem = ({ toDo, children }) => {
     return (
         <li className={`${styles.activity} ${styles[toDo.category]}`}>
             <p className={styles.avgTime}>{toDo.avgTime ?? '*'}</p>
             <h4 className={styles.name}>{toDo.name}</h4>
             <div>
-                {<DeleteButton itemId={toDo.id} />}
+                {children}
             </div>
         </li>
     );
@@ -20,7 +19,8 @@ TodoItem.propTypes = {
         name: PropTypes.string.isRequired,
         category: PropTypes.string.isRequired,
         avgTime: PropTypes.number,
-    })
+    }),
+    children: PropTypes.node,
 };
 
 export default TodoItem;

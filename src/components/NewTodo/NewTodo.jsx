@@ -1,8 +1,9 @@
 import classes from './NewTodo.module.css';
 
 import { v4 as uuidv4 } from "uuid";
-import { getActivity, findAvgTime, findCategory } from '../../utils/activityUtils'
 import { useContext } from 'react';
+import { getActivity, findAvgTime, findCategory } from '../../utils/activityUtils'
+import { proper } from '../../utils/stringUtils';
 import ItemsContext from '../../store/itemsContext';
 import useInput from '../../hooks/useInput';
 
@@ -27,7 +28,7 @@ const NewToDo = () => {
 
         addAsToDo({
             id: uuidv4(),
-            name: todo,
+            name: proper(todo),
             category: findCategory(todo),
             avgTime: findAvgTime(todo),
         });

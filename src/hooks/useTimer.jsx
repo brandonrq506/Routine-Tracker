@@ -9,13 +9,23 @@ const useTimer = () => {
     const [isRunning, setIsRunning] = useState(false);
 
     const start = (avgMinutes = 60) => {
+        if (isNaN(avgMinutes)) return;
         const startTime = new Date();
         const endTime = add(startTime, { minutes: avgMinutes });
         setIsRunning(true);
         setMetaData({ startTime, endTime });
     };
 
-    const stop = () => setIsRunning(false);
+    const stop = () => {
+        setIsRunning(false);
+        reset();
+    }
+
+    const reset = () => {
+        setTimeLeft(0);
+        setPercentage(0);
+        setMetaData({ startTime: null, endTime: null, duration: 0 });
+    }
 
     useEffect(() => {
         if (!isRunning) return;

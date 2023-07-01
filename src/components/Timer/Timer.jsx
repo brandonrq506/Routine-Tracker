@@ -5,16 +5,17 @@ import ItemsContext from '../../store/itemsContext'
 
 const Timer = () => {
     const itemsCtx = useContext(ItemsContext);
-    const currentTask = itemsCtx.toDoList[0];
+    const [currentTask, nextTask] = itemsCtx.toDoList;
     const { timeLeft, percentage, metaData, isRunning, start, stop } = useTimer();
 
     const onStart = () => {
         start(currentTask.avgTime);
     }
 
-    const nextTask = () => {
-        start(itemsCtx.toDoList[1]?.avgTime);
-        if (!itemsCtx.toDoList[1]) stop();
+    const handleNextTask = () => {
+        if (!nextTask) stop();
+
+        start(nextTask?.avgTime);
         itemsCtx.addAsDone({ ...currentTask, ...metaData });
         itemsCtx.removeToDo(currentTask.id);
     }
@@ -33,8 +34,8 @@ const Timer = () => {
             <p>{timeLeft}</p>
             <p>{percentage}%</p>
             <p>{metaData.duration}</p>
-            {isRunning && <button onClick={nextTask}>Next</button>}
-            <h2>Next Task: {itemsCtx.toDoList[1]?.name || 'No more tasks'}</h2>
+            {isRunning && <button onClick={handleNextTask}>Next</button>}
+            <h2>Next Task: {nextTask?.name || 'No more tasks'}</h2>
         </>
     );
 };

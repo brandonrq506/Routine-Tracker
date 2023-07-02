@@ -22,7 +22,7 @@ const Timer = () => {
             start(nextTask.avgTime);
         }
 
-        itemsCtx.addAsDone({ ...currentTask, ...metaData });
+        itemsCtx.addAsDone({ ...currentTask, ...metaData, endTime: new Date() });
         itemsCtx.removeToDo(currentTask.id);
     }
 

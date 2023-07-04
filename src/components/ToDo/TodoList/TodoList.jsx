@@ -13,7 +13,7 @@ const TodoList = ({ toDos, header }) => {
 
     return (
         <>
-            <h1>{heading}</h1>
+            <h2>{heading}</h2>
             {toDos.map(todo =>
                 <TodoItem key={todo.id} toDo={todo} />
             )}

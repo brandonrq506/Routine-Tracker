@@ -1,0 +1,7 @@
+.pillGroup {
+    margin-top: 0.5rem;
+}
+
+.dropdown:empty {
+    border: none;
+}

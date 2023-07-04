@@ -1,0 +1,50 @@
+li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    margin: 0.5rem 1rem;
+    padding: 0.5rem;
+}
+
+h4 {
+    margin: 0%;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.description {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    width: 150px;
+    text-align: left;
+}
+
+.avgTime {
+    margin: 0px 10px 0px;
+    width: 20px;
+}
+
+.productive {
+    background-color: #C7E5EF;
+    color: #005962;
+}
+
+.wellness {
+    background-color: #C6EFCE;
+    color: #006100;
+}
+
+.procrastination {
+    background-color: #FFC7CE;
+    color: #9C0006;
+}
+
+.necessary {
+    background-color: #FFEB9C;
+    color: #9C5700;
+}

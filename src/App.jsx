@@ -1,18 +1,14 @@
-import ItemsProvider from './store/ItemsProvider'
-import NewToDo from "./components/NewToDo/NewToDo";
-import TodoList from './components/TodoList/TodoList';
-import Timer from './components/Timer/Timer';
-import DoneList from './components/DoneList/DoneList';
+import ToDo from "./components/ToDo/ToDo";
+import Timer from "./components/Timer/Timer";
+import DoneList from "./components/DoneList/DoneList";
 
 const App = () => {
+
     return (
         <>
-            <ItemsProvider>
-                <NewToDo />
-                <TodoList />
-                <Timer />
-                <DoneList />
-            </ItemsProvider>
+            <ToDo />
+            <Timer />
+            <DoneList />
         </>
     );
 };

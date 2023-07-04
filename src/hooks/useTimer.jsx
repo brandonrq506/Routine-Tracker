@@ -5,7 +5,7 @@ import { getTimeLeft, getPercentageLeft, msToTime } from '../utils/timerUtils'
 const useTimer = () => {
     const [metaData, setMetaData] = useState({ startTime: null, endTime: null, duration: 0 });
     const [timeLeft, setTimeLeft] = useState(0);
-    const [percentage, setPercentage] = useState(0);
+    const [percentage, setPercentage] = useState(100);
     const [isRunning, setIsRunning] = useState(false);
 
     const start = (avgMinutes = 60) => {

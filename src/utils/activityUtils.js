@@ -1,6 +1,6 @@
 import activityLookup from '../store/activityLookup'
 
-const cleanUp = (string) => string.trim().toLowerCase();
+const cleanUp = string => string.trim().toLowerCase();
 
 //Only handles the iteration, does not know how the matching is done.
 const findActivity = (activityName, matcher) => {

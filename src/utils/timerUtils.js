@@ -6,6 +6,14 @@ export function getTimeLeft(end) {
     return `${determineSign(end, now)}${timeString}`;
 }
 
+export function secondsToTime(seconds) {
+
+}
+
+export function minutesToTime(minutes) {
+    
+}
+
 
 export function getPercentageLeft(startTime, endTime) {
     const now = new Date();

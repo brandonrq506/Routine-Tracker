@@ -1,0 +1,36 @@
+.pill {
+    border-radius: 8px;
+    padding: 0.3em 1.2em;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 2px;
+    border: none;
+}
+
+.pill:hover {               
+    background-color: rgba(0, 0, 0, .50);
+    color: white;
+}
+
+.productive {
+    background-color: #C7E5EF;
+    color: #005962;
+}
+
+.wellness {
+    background-color: #C6EFCE;
+    color: #006100;
+}
+
+.procrastination {
+    background-color: #FFC7CE;
+    color: #9C0006;
+}
+
+.necessary {
+    background-color: #FFEB9C;
+    color: #9C5700;
+}

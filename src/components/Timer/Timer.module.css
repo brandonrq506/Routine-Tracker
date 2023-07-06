@@ -13,3 +13,13 @@
     outline: none;
     transition: 0.3s;
 }
+
+.action-button:focus {
+    background-color: #b6bfc4;
+    color: rgb(75, 75, 75);
+}
+
+.action-button:hover {
+    background-color: #b6bfc4;
+    color: rgb(75, 75, 75);
+}

@@ -52,3 +52,11 @@ SearchableList.propTypes = {
 }
 
 export default SearchableList;
+
+
+/* 
+When I CLICK on one of the element, I want them to be added to the list, not to the input.
+When I FULLY type a task name, and it does not have a : in it, I want it to be added to the list, not to the input.
+I want searchable list to have 5 pre-defined suggestions when there is nothing in the input. These are configurable
+from a config panel.
+*/

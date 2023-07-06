@@ -10,7 +10,7 @@ const ItemsProvider = ({ children }) => {
     //Add our functionality (Use Reducer for more complex functionality)
     const addAsToDo = (item) => setToDoList([...toDoList, item]);
     const addAsDone = (item) => setDoneList([...doneList, item]);
-    const addAsPriority = (item) => setToDoList([item, ...toDoList]);
+    const addAsPriority = (item) => setToDoList([toDoList[0], item, ...toDoList.slice(1)]);
     const updateToDo = (item) => setToDoList(toDoList.map((i) => i.id === item.id ? { ...item } : i));
     const removeToDo = (id) => setToDoList(toDoList.filter((i) => i.id !== id));
 

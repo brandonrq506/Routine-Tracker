@@ -8,8 +8,8 @@ const TaskName = ({ category, name = 'Not Set Yet', addText = '' }) => {
 };
 
 TaskName.propTypes = {
-    name: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    category: PropTypes.string,
     addText: PropTypes.string,
 };
 

@@ -34,6 +34,8 @@ const useTimer = () => {
         timer: {
             startTime: data.startTime,
             endTime: new Date(),
+            //If we follow the commens at the end of the file, here we can do 
+            //date-fns.differenceInSeconds(data.startTime, data.endTime)
             duration: getSecondsSinceStart(data.startTime),
             isRunning,
             secondsLeft: data.endTime ? getSecondsLeft(data.endTime) : 0,
@@ -45,3 +47,9 @@ const useTimer = () => {
 };
 
 export default useTimer;
+
+/* 
+Can we make it so instead of increasing a second every second, we simply update data.endTime = new Date()?
+That way we removed the variable we are NOT using.
+And we don't have to create so many new Date() objects in our timeUtils.js file.
+*/

@@ -1,4 +1,4 @@
-li {
+.todo-Element {
     list-style: none;
     display: flex;
     align-items: center;
@@ -8,18 +8,15 @@ li {
     padding: 0.5rem;
 }
 
-h4 {
-    margin: 0%;
-    font-size: 15px;
-    font-weight: 600;
-}
-
 .description {
     display: flex;
     align-items: center;
 }
 
 .name {
+    margin: 0%;
+    font-size: 15px;
+    font-weight: 600;
     width: 150px;
     text-align: left;
 }

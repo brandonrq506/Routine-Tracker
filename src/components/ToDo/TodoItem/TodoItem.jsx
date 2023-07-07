@@ -5,7 +5,7 @@ import DeleteButton from './DeleteButton';
 
 const TodoItem = ({ toDo }) => {
     return (
-        <li className={styles[toDo.category]}>
+        <li className={`${styles.todoElement} ${styles[toDo.category]}`}>
             <div className={styles.description}>
                 <p className={styles.avgTime}>{toDo.avgTime ?? '*'}</p>
                 <h4 className={styles.name}>{toDo.name}</h4>

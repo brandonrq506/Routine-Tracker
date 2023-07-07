@@ -1,4 +1,4 @@
-import { getSecondsLeft, getPercentageLeft } from "../utils/timerUtils";
+import { getSecondsLeft, getPercentageLeft, getSecondsSinceStart } from "../utils/timerUtils";
 import { useState, useEffect } from "react";
 import { add } from "date-fns";
 
@@ -34,7 +34,7 @@ const useTimer = () => {
         timer: {
             startTime: data.startTime,
             endTime: new Date(),
-            duration: seconds,
+            duration: getSecondsSinceStart(data.startTime),
             isRunning,
             secondsLeft: data.endTime ? getSecondsLeft(data.endTime) : 0,
             percentage: data.endTime ? getPercentageLeft(data.startTime, data.endTime) : 0,

@@ -11,6 +11,12 @@ export const getSecondsLeft = (end) => {
     return Math.floor(msDifference / 1000);
 }
 
+export const getSecondsSinceStart = (start) => {
+    const now = new Date();
+    const milliseconds = now.getTime() - start.getTime();
+    return Math.round(milliseconds / 1000);
+}
+
 
 // Assume `now` and `end` are Date objects
 export function getTimeLeft(end) {

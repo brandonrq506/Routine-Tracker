@@ -3,11 +3,14 @@ const determineSign = (end, now) => end < now ? '-' : '';
 
 const padNumber = number => number.toString().padStart(2, '0');
 
+export const secondsToMinutes = (seconds) => Math.floor(seconds / 60);
+
 export const getSecondsLeft = (end) => {
     const now = new Date();
     const msDifference = end - now;
     return Math.floor(msDifference / 1000);
 }
+
 
 // Assume `now` and `end` are Date objects
 export function getTimeLeft(end) {

@@ -1,3 +1,9 @@
+.doneItem {
+    list-style: none;
+    border-radius: 5px;
+    padding: 0;
+    margin: 0;
+}
 
 .activity {
     display: flex;
@@ -5,6 +11,7 @@
     justify-content: space-around;
     border: 1px solid;
     border-radius: 7px;
+    width: 100%;
 }
 
 .productive {

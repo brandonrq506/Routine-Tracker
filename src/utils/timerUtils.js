@@ -5,21 +5,14 @@ const padNumber = number => number.toString().padStart(2, '0');
 
 export const secondsToMinutes = (seconds) => Math.floor(seconds / 60);
 
-export const getSecondsLeft = (end) => {
-    const now = new Date();
-    const msDifference = end - now;
-    return Math.floor(msDifference / 1000);
+export const getSecondsLeft = (endTime, currentTime) =>
+    Math.floor((endTime - currentTime) / 1000);
+
+export function secondsToTime(seconds) {
+    const timeString = formatSeconds(Math.abs(seconds));
+    return `${determineSign(seconds, 0)}${timeString}`;
 }
 
-export const getSecondsSinceStart = (start) => {
-    if (start === null) return 0;
-    const now = new Date();
-    const milliseconds = now.getTime() - start.getTime();
-    return Math.round(milliseconds / 1000);
-}
-
-
-// Assume `now` and `end` are Date objects
 export function getTimeLeft(end) {
     const now = new Date();
     const msDifference = Math.abs(end - now);
@@ -27,29 +20,15 @@ export function getTimeLeft(end) {
     return `${determineSign(end, now)}${timeString}`;
 }
 
-export function secondsToTime(seconds) {
-    const timeString = formatSeconds(Math.abs(seconds));
-    return `${determineSign(seconds, 0)}${timeString}`;
+export function getPercentageLeft(startTime, endTime, currentTime) {
+    if (currentTime > endTime) return 0;
+
+    const totalMili = Math.abs(endTime - startTime);
+    const miliLeft = Math.abs(endTime - currentTime);
+    return Math.round((miliLeft / totalMili) * 100);
 }
 
-export function getPercentageLeft(startTime, endTime) {
-    const now = new Date();
-    if (now > endTime)
-        return 0;
-
-    const totalMs = Math.abs(endTime - startTime);
-    const msLeft = Math.abs(endTime - now);
-    return Math.round((msLeft / totalMs) * 100);
-}
-
-export function minutesToTime(minutes) {
-    const hours = Math.floor(minutes / 60);
-    const minutesLeft = minutes % 60;
-
-    return `${padNumber(hours)}:${padNumber(minutesLeft)}:00`;
-}
-
-export function formatSeconds(seconds) {
+function formatSeconds(seconds) {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor(seconds / 60);
     const secondsLeft = seconds % 60;
@@ -57,7 +36,7 @@ export function formatSeconds(seconds) {
     return `${padNumber(hours)}:${padNumber(minutes)}:${padNumber(secondsLeft)}`;
 }
 
-export const msToTime = (miliseconds) => {
+const msToTime = (miliseconds) => {
     // Calculate hours, minutes and seconds
     const hours = Math.floor(miliseconds / 3600000);
     const minutes = Math.floor(miliseconds / 60000);

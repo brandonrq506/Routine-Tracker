@@ -13,7 +13,7 @@ const DoneItem = ({ doneItem }) => {
 
     const content = height > font_size && (
         <>
-            <p>{doneItem.name}</p>
+            <p className={styles.activityName}>{doneItem.name}</p>
             <p>{secondsToTime(doneItem.duration)}</p>
             <p>{doneItem.startTime.toLocaleTimeString('en-US')}</p>
             <p>{doneItem.endTime.toLocaleTimeString('en-US')}</p>

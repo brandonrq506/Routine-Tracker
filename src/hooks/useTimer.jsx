@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 import { add } from "date-fns";
 
 const useTimer = () => {
+    //Update endTime with 'ExpectedEndTime'
     const [data, setData] = useState({ startTime: null, endTime: null });
     const [isRunning, setIsRunning] = useState(false);
+    //Remove this state with const [endTime, setEndTime] = useState(new Date());
     const [seconds, setSeconds] = useState(0);
 
     const start = (avgMinutes = 60) => {
@@ -21,6 +23,7 @@ const useTimer = () => {
         setIsRunning(false);
     }
 
+    //This will set endTime to new Date() every second.
     useEffect(() => {
         if (!isRunning) return;
         const timer = setInterval(() => {

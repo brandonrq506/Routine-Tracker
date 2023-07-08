@@ -12,6 +12,7 @@ export const getSecondsLeft = (end) => {
 }
 
 export const getSecondsSinceStart = (start) => {
+    if (start === null) return 0;
     const now = new Date();
     const milliseconds = now.getTime() - start.getTime();
     return Math.round(milliseconds / 1000);

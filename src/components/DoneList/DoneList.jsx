@@ -1,4 +1,4 @@
-// import styles from './DoneList.module.css';
+import styles from './DoneList.module.css';
 import { useContext } from 'react';
 import ItemsContext from '../../store/itemsContext';
 import DoneItem from '../DoneItem/DoneItem';
@@ -10,7 +10,7 @@ const DoneList = () => {
 
     return (
         <section>
-            <ul>
+            <ul className={styles.doneList}>
                 <h1>Done Items</h1>
                 {doneItems}
             </ul>

@@ -23,6 +23,7 @@ const Timer = () => {
             startTime: timer.startTime,
             endTime: timer.endTime,
             duration: timer.duration,
+            isOnTime: timer.isOnTime,
         });
         itemsCtx.removeToDo(currentTask.id);
     }

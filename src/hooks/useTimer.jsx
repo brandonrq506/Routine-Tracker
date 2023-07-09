@@ -31,7 +31,7 @@ export default function useTimer() {
             endTime: currentTime,
             duration: getSecondsLeft(currentTime, timerData.startTime),
             isRunning,
-            onTime: timerData.endTime ? timerData.endTime > currentTime : false,
+            isOnTime: timerData.endTime ? timerData.endTime > currentTime : false,
             secondsLeft: timerData.endTime ? getSecondsLeft(timerData.endTime, currentTime) : 0,
             percentage: timerData.endTime ? getPercentageLeft(timerData.startTime, timerData.endTime, currentTime) : 0,
         },

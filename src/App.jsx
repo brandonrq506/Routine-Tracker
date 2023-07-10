@@ -9,6 +9,7 @@ const App = () => {
             <ToDo />
             <Timer />
             <DoneList />
+            <button onClick={() => localStorage.clear()}>Clear Local Storage</button>
         </>
     );
 };

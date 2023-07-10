@@ -17,9 +17,7 @@ const App = () => {
 export default App;
 
 /*
-Hey, you are a senior react developer, known for following only the best practices like composition, single responsibility principle, separation of concerns, inmutability, etc.
-
-You have been tasked to build a Routine tracker. This routine tracker will allow users to input a list of to-do items and you start and finish a to-do item by pressing a button. Once you have pressed the button to finish that item, it will be moved to a 'done' array.
+This routine tracker will allow users to input a list of to-do items and you start and finish a to-do item by pressing a button. Once you have pressed the button to finish that item, it will be moved to a 'done' array.
 
 Tracker will have a simple input screen where you can enter your new Tasks. Input will consist of one <Input/> type text for the Activity Name. The activity 'Category' and 'AvgTime' will be inferred from a LookUp table.
 

@@ -7,7 +7,7 @@ const ItemsProvider = ({ children }) => {
     //Add our state
     const [toDoList, setToDoList] = useState(parseInfo('toDoList') || []);
     const [doneList, setDoneList] = useState(parseInfo('doneList') || []);
-    // const [currentToDo, setCurrentToDo] = useState(parseInfo('currentToDo') || null);
+    const [currentToDo, setCurrentToDo] = useState(parseInfo('currentToDo') || null);
 
     useEffect(() => {
         stringifyInfo('toDoList', toDoList);
@@ -17,28 +17,40 @@ const ItemsProvider = ({ children }) => {
         stringifyInfo('doneList', doneList);
     }, [doneList]);
 
-    // useEffect(() => {
-    //     stringifyInfo('currentToDo', currentToDo);
-    // }, [currentToDo]);
+    useEffect(() => {
+        stringifyInfo('currentToDo', currentToDo);
+    }, [currentToDo]);
 
-    //Add our functionality (Use Reducer for more complex functionality)
-    const addAsToDo = (item) => setToDoList([...toDoList, item]);
-    const addAsDone = (item) => setDoneList([...doneList, item]);
-    const addAsPriority = (item) => setToDoList(item, ...toDoList);
-    const updateToDo = (item) => setToDoList(toDoList.map((i) => i.id === item.id ? { ...item } : i));
-    const removeToDo = (id) => setToDoList(toDoList.filter((i) => i.id !== id));
+    const addToDo = (item) => setToDoList(prevList => [...prevList, item]);
+    const addAsDone = (item) => setDoneList(prevList => [...prevList, item]);
+    const addAsPriority = (item) => setToDoList(prevList => [item, ...prevList]);
+    const updateToDo = (item) => setToDoList(prevList => prevList.map((i) => i.id === item.id ? { ...item } : i));
+    const removeToDo = (id) => setToDoList(prevList => prevList.filter((i) => i.id !== id));
 
     const addAsCurrTodo = () => {
-        if (toDoList.length === 0) return;
-        // setCurrentToDo(toDoList[0]);
+        if (toDoList.length === 0) {
+            setCurrentToDo(null);
+            return;
+        }
+
+        setCurrentToDo(toDoList[0]);
         setToDoList(prevList => prevList.slice(1));
+    }
+
+    const addAsToDo = item => {
+        if (!currentToDo) {
+            setCurrentToDo(item);
+            return;
+        }
+        console.log('CurrentToDo Exists');
+        addToDo(item);
     }
 
     //Create our context
     const itemsContext = {
         toDoList,
         doneList,
-        // currentToDo,
+        currentToDo,
         addAsToDo,
         addAsCurrTodo,
         addAsDone,
@@ -60,3 +72,7 @@ ItemsProvider.propTypes = {
 };
 
 export default ItemsProvider;
+/* 
+ALL of this needs to be refactored. I must create an interface that facilitates interacting with this
+without having to worry about all the implementation details. Order of updates, etc.
+*/

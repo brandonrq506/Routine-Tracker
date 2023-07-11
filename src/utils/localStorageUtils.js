@@ -2,6 +2,7 @@ export const parseInfo = (key) => {
     const storedInfo = localStorage.getItem(key);
     if (!storedInfo) return null
     const parsedValue = JSON.parse(storedInfo);
+    if (!parsedValue) return null
 
     if (Array.isArray(parsedValue)) {
         return parsedValue.map(item => ({

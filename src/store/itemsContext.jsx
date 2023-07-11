@@ -3,7 +3,7 @@ import { createContext } from "react";
 const ItemsContext = createContext({
     toDoList: [],
     doneList: [],
-    // currentToDo: null,
+    currentToDo: null,
     addAsToDo: () => { },
     addAsCurrTodo: () => { },
     addAsDone: () => { },

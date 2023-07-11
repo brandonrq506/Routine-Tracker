@@ -10,22 +10,28 @@ import { findAvgTime, findCategory } from "../../utils/activityUtils";
 
 const Timer = () => {
     const itemsCtx = useContext(ItemsContext);
-    const [currentTask, nextTask] = itemsCtx.toDoList;
+    const currentToDo = itemsCtx.currentToDo;
+    const nextTask = itemsCtx.toDoList[0];
     const { timer, start, stop } = useTimer();
 
-    const onStart = () => start(currentTask.avgTime);
+    const onStart = () => {
+        start(currentToDo.avgTime);
+    };
 
+    //This all should be handled in the Context.
+    //I only call 'getNext' and the current is added to the done list, the information completed
+    //The list updated, and the next returned. Or SOMETHING like that.
     const onNext = () => {
         stop();
         if (nextTask) start(nextTask.avgTime);
         itemsCtx.addAsDone({
-            ...currentTask,
+            ...currentToDo,
             startTime: timer.startTime,
             endTime: timer.endTime,
             duration: timer.duration,
             isOnTime: timer.isOnTime,
         });
-        itemsCtx.removeToDo(currentTask.id);
+        itemsCtx.addAsCurrTodo();
     }
 
     const onPriority = value => {
@@ -39,18 +45,12 @@ const Timer = () => {
         );
     }
 
-    if (itemsCtx.toDoList.length === 0)
-        return <h1>No To-Dos left</h1>;
-
-    if (!timer.isRunning)
-        return <button onClick={onStart}>Start</button>
-
-
     return (
         <div>
-            <TaskName name={currentTask.name} category={currentTask.category} />
+            <TaskName name={currentToDo?.name} category={currentToDo?.category} />
             <p>{secondsToTime(timer.secondsLeft)}</p>
             <p>{timer.percentage}%</p>
+            {!timer.isRunning && <button disabled={!itemsCtx.currentToDo} onClick={onStart}>Start</button>}
             {timer.isRunning && <button className={styles.actionButton} onClick={onNext}>Next</button>}
             {timer.isRunning && <button className={styles.actionButton} onClick={() => onPriority('Break')}>Break</button>}
             <TaskName name={nextTask?.name} category={nextTask?.category} addText='Next Task:' />

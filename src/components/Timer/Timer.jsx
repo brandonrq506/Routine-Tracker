@@ -1,12 +1,10 @@
 import styles from './Timer.module.css';
-import { v4 as uuidv4 } from "uuid";
 import { useContext } from "react";
 import useTimer from "../../hooks/useTimer";
 import ItemsContext from '../../store/itemsContext'
 import TaskName from "./TaskName/TaskName";
 import { secondsToTime } from "../../utils/timerUtils";
-import { proper } from "../../utils/stringUtils";
-import { findAvgTime, findCategory } from "../../utils/activityUtils";
+import { createActivity } from "../../utils/activityUtils";
 
 const Timer = () => {
     const itemsCtx = useContext(ItemsContext);
@@ -35,14 +33,7 @@ const Timer = () => {
     }
 
     const onPriority = value => {
-        itemsCtx.addAsPriority(
-            {
-                id: uuidv4(),
-                name: proper(value),
-                category: findCategory(value),
-                avgTime: findAvgTime(value),
-            }
-        );
+        itemsCtx.addAsPriority(createActivity(value));
     }
 
     return (

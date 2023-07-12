@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { useState, useRef } from 'react';
 
+import { filterActivities, getActivity } from '../../../utils/activityUtils';
 import SearchInput from '../../UI/SearchInput/SearchInput';
-import PillGroup from '../../UI/PillGroup/PillGroup';
-import PillOption from '../../UI/PillOption/PillOption';
+import OptionList from '../../UI/OptionList/OptionList';
 
 const SearchableList = ({ activities, onSubmit, maxResults = 5 }) => {
     const inputRef = useRef();
@@ -14,15 +14,9 @@ const SearchableList = ({ activities, onSubmit, maxResults = 5 }) => {
         inputRef.current.focus();
     }
 
-    const transformInput = (search, activity) => ({
-        searchTerm: search.toLowerCase(),
-        activity: activity.toLowerCase()
-    });
+    const foundActivities = filterActivities(activities, searchText).slice(0, maxResults);
+    const defaultOptions = searchText ? [] : ['Break', 'Barbara', 'Reply', 'React:', 'Bathroom'];
 
-    const filteredResults = activities.filter(item => {
-        const { searchTerm, activity } = transformInput(searchText, item.name);
-        return searchTerm && activity.startsWith(searchTerm) && activity !== searchTerm;
-    }).slice(0, maxResults);
 
     return (
         <>
@@ -32,14 +26,11 @@ const SearchableList = ({ activities, onSubmit, maxResults = 5 }) => {
                 onChange={newText => setSearchText(newText)}
                 onSubmit={onSubmit}
             />
-            <PillGroup>
-                {filteredResults.map(activity =>
-                    <PillOption
-                        key={activity.name}
-                        activity={activity}
-                        onClick={onSelectPill} />
-                )}
-            </PillGroup>
+            <OptionList
+                options={foundActivities}
+                onClick={onSelectPill}
+                defaultOptions={defaultOptions.map(activity => getActivity(activity))}
+            />
         </>
     )
 }

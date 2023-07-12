@@ -7,7 +7,8 @@ export default function useTimer() {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [isRunning, setIsRunning] = useState(false);
 
-    const start = (avgMinutes = 60) => {
+    const start = (avgMinutes) => {
+        avgMinutes ??= 60;
         const now = new Date();
         setTimerData({ startTime: now, endTime: add(now, { minutes: avgMinutes }) });
         setCurrentTime(now);

@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { proper } from './stringUtils';
 import activityLookup from '../store/activityLookup'
 
-const cleanUp = string => string.toLowerCase();
+const cleanUp = string => string.trim().toLowerCase();
 
 //Only handles the iteration, does not know how the matching is done.
 const findActivity = (activityName, matcher) => {
@@ -31,15 +31,12 @@ export const getActivity = activityName => activityName.includes(":") ?
 
 export const findActivityProperty = (activityName, property) => getActivity(activityName)?.[property] ?? null;
 
-export const createActivity = name => {
-    const activity = {
-        id: uuidv4(),
-        name: proper(name),
-        category: findActivityProperty(name, "category"),
-        avgTime: findActivityProperty(name, "avgTime"),
-    };
-    return activity;
-};
+export const createActivity = name => ({
+    id: uuidv4(),
+    name: proper(name),
+    category: findActivityProperty(name, "category"),
+    avgTime: findActivityProperty(name, "avgTime"),
+});
 
 
 export const filterActivities = (activities, searchText) =>

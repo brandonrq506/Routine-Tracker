@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-// import styles from './SearchableList.module.css';
 import { useState, useRef } from 'react';
 
 import SearchInput from '../../UI/SearchInput/SearchInput';

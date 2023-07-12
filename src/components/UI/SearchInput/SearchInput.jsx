@@ -2,10 +2,8 @@ import PropTypes from 'prop-types';
 import styles from './SearchInput.module.css';
 
 import { forwardRef } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { getActivity } from '../../../utils/activityUtils';
-import { proper } from '../../../utils/stringUtils';
-import { findCategory, findAvgTime } from '../../../utils/activityUtils';
+import { createActivity } from '../../../utils/activityUtils';
 
 const SearchInput = forwardRef(function SearchInput(props, ref) {
     const value = props.value;
@@ -16,12 +14,7 @@ const SearchInput = forwardRef(function SearchInput(props, ref) {
         event.preventDefault();
         if (!isValid) return;
 
-        props.onSubmit({
-            id: uuidv4(),
-            name: proper(value),
-            category: findCategory(value),
-            avgTime: findAvgTime(value),
-        });
+        props.onSubmit(createActivity(value));
 
         props.onChange('');
     };

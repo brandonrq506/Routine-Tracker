@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-// import styles from './TodoList.module.css';
-
 import TodoItem from '../TodoItem/TodoItem';
 
 const TodoList = ({ toDos, header }) => {

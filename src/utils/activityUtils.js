@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { proper } from './stringUtils';
 import activityLookup from '../store/activityLookup'
 
-const cleanUp = string => string.trin().toLowerCase();
+const cleanUp = string => string.trim().toLowerCase();
 
 //Only handles the iteration, does not know how the matching is done.
 const findActivity = (activityName, matcher) => {

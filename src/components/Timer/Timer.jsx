@@ -40,7 +40,15 @@ const Timer = () => {
         <div>
             <TaskName name={currentToDo?.name} category={currentToDo?.category} />
             <p>{secondsToTime(timer.secondsLeft)}</p>
-            <p>{timer.percentage}%</p>
+            {/* <p>{timer.percentage}%</p> */}
+            <div>
+                <div>
+                    {timer.percentage}%
+                </div>
+                <label>
+                    <progress value={timer.percentage} max="100" />
+                </label>
+            </div>
             {!timer.isRunning && <button disabled={!itemsCtx.currentToDo} onClick={onStart}>Start</button>}
             {timer.isRunning && <button className={styles.actionButton} onClick={onNext}>Next</button>}
             {timer.isRunning && <button className={styles.actionButton} onClick={() => onPriority('Break')}>Break</button>}

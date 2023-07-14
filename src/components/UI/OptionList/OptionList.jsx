@@ -4,7 +4,6 @@ import PillOption from '../PillOption/PillOption';
 
 const OptionList = ({ options, onClick, defaultOptions = [] }) => {
     const pills = options.length === 0 ? defaultOptions : options;
-
     return (
         <ul className={styles.optionGroup}>
             {pills.map(activity =>

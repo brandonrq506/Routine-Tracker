@@ -1,17 +1,31 @@
 import PropTypes from 'prop-types';
 import { useState, useRef } from 'react';
 
-import { filterActivities, getActivity } from '../../../utils/activityUtils';
+import { filterActivities, getActivity, createActivity } from '../../../utils/activityUtils';
 import SearchInput from '../../UI/SearchInput/SearchInput';
 import OptionList from '../../UI/OptionList/OptionList';
 
 const SearchableList = ({ activities, onSubmit, maxResults = 5 }) => {
     const inputRef = useRef();
     const [searchText, setSearchText] = useState('');
+    const isValid = !!getActivity(searchText);
 
-    const onSelectPill = pillText => {
+
+    const onPillSelect = pillText => {
         setSearchText(pillText);
         inputRef.current.focus();
+    }
+
+    const handleSubmit = text => {
+        const activity = createActivity(text);
+        onSubmit(activity);
+        setSearchText('');
+    }
+
+    const onPillClick = pillText => {
+        pillText.endsWith(':') ?
+            onPillSelect(pillText) :
+            handleSubmit(pillText)
     }
 
     const foundActivities = filterActivities(activities, searchText).slice(0, maxResults);
@@ -22,12 +36,13 @@ const SearchableList = ({ activities, onSubmit, maxResults = 5 }) => {
             <SearchInput
                 value={searchText}
                 ref={inputRef}
+                isValid={isValid}
                 onChange={newText => setSearchText(newText)}
-                onSubmit={onSubmit}
+                onSubmit={handleSubmit}
             />
             <OptionList
                 options={foundActivities}
-                onClick={onSelectPill}
+                onClick={onPillClick}
                 defaultOptions={defaultOptions.map(activity => getActivity(activity))}
             />
         </>
@@ -41,11 +56,3 @@ SearchableList.propTypes = {
 }
 
 export default SearchableList;
-
-
-/* 
-When I CLICK on one of the element, I want them to be added to the list, not to the input.
-When I FULLY type a task name, and it does not have a : in it, I want it to be added to the list, not to the input.
-I want searchable list to have 5 pre-defined suggestions when there is nothing in the input. These are configurable
-from a config panel.
-*/

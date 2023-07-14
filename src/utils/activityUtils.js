@@ -25,6 +25,7 @@ const transformInput = (search, activity) => ({
 });
 
 //Decides what matcher to use
+//Returns a string or undefined.
 export const getActivity = activityName => activityName.includes(":") ?
     approximateMatch(activityName) :
     exactMatch(activityName);

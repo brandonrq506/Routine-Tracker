@@ -17,7 +17,6 @@ const SearchableList = ({ activities, onSubmit, maxResults = 5 }) => {
     const foundActivities = filterActivities(activities, searchText).slice(0, maxResults);
     const defaultOptions = searchText ? [] : ['Break', 'Barbara', 'Reply', 'React:', 'Bathroom'];
 
-
     return (
         <>
             <SearchInput

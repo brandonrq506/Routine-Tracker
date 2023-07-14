@@ -17,7 +17,7 @@ const activityLookup = [
     {
         name: 'barbara',
         category: 'necessary',
-        avgTime: undefined,
+        avgTime: 5,
     },
     {
         name: 'bathroom',
@@ -47,7 +47,7 @@ const activityLookup = [
     {
         name: 'ce:',
         category: 'productive',
-        avgTime: undefined,
+        avgTime: 120,
     },
     {
         name: 'chatgpt',
@@ -72,7 +72,7 @@ const activityLookup = [
     {
         name: 'cooking',
         category: 'necessary',
-        avgTime: undefined,
+        avgTime: 20,
     },
     {
         name: 'daily',
@@ -97,12 +97,12 @@ const activityLookup = [
     {
         name: 'dw:',
         category: 'productive',
-        avgTime: undefined,
+        avgTime: 120,
     },
     {
         name: 'gad:',
         category: 'productive',
-        avgTime: undefined,
+        avgTime: 120,
     },
     {
         name: 'green seals',
@@ -177,7 +177,7 @@ const activityLookup = [
     {
         name: 'reply',
         category: 'necessary',
-        avgTime: undefined,
+        avgTime: 5,
     },
     {
         name: 'research:',

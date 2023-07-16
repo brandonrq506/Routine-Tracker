@@ -1,5 +1,5 @@
 import styles from './Timer.module.css';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import useTimer from "../../hooks/useTimer";
 import ItemsContext from '../../store/itemsContext'
 import TaskName from "./TaskName/TaskName";
@@ -14,11 +14,12 @@ const Timer = () => {
 
     const onStart = () => {
         start(currentToDo.avgTime);
+        itemsCtx.editCurrTodo({
+            ...currentToDo,
+            startTime: new Date(),
+        });
     };
 
-    //This all should be handled in the Context.
-    //I only call 'getNext' and the current is added to the done list, the information completed
-    //The list updated, and the next returned. Or SOMETHING like that.
     const onNext = () => {
         stop();
         if (nextTask) start(nextTask.avgTime);
@@ -36,11 +37,16 @@ const Timer = () => {
         itemsCtx.addAsPriority(createActivity(value));
     }
 
+    useEffect(() => {
+        if (currentToDo) {
+            start(currentToDo.avgTime, currentToDo.startTime);
+        }
+    }, []);
+
     return (
         <div>
             <TaskName name={currentToDo?.name} category={currentToDo?.category} />
             <p>{secondsToTime(timer.secondsLeft)}</p>
-            {/* <p>{timer.percentage}%</p> */}
             <div>
                 <div>
                     {timer.percentage}%

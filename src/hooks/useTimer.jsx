@@ -7,13 +7,15 @@ export default function useTimer() {
     const [currentTime, setCurrentTime] = useState(new Date());
     const [isRunning, setIsRunning] = useState(false);
 
-    const start = (avgMinutes) => {
+    //It this function starts my timer, why is it also creating a date, setting timer data, and setting current time?
+    //We should have different functions for that.
+    const start = (avgMinutes, startTime) => {
         avgMinutes ??= 60;
-        const now = new Date();
-        setTimerData({ startTime: now, endTime: add(now, { minutes: avgMinutes }) });
-        setCurrentTime(now);
+        startTime ??= new Date();
+        setTimerData({ startTime: startTime, endTime: add(startTime, { minutes: avgMinutes }) });
+        setCurrentTime(startTime);
         setIsRunning(true);
-    };
+    }
 
     const stop = () => {
         setTimerData({ startTime: null, endTime: null });
@@ -26,6 +28,18 @@ export default function useTimer() {
         return () => clearInterval(timer);
     }, [isRunning]);
 
+    /* 
+    Timer should just return:
+    start(),
+    stop(),
+    isRunning,
+    timer: {
+        startTime: Date,
+        endTime: Date,
+    }
+    All the other stuff should be computed in the component that uses the hook.
+    So they can use the timer data to display whatever they want. Instead of getting opinionated data from the hook.
+    */
     return {
         timer: {
             startTime: timerData.startTime,

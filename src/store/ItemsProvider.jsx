@@ -26,6 +26,35 @@ const ItemsProvider = ({ children }) => {
     const addAsPriority = (item) => setToDoList(prevList => [item, ...prevList]);
     const updateToDo = (item) => setToDoList(prevList => prevList.map((i) => i.id === item.id ? { ...item } : i));
     const removeToDo = (id) => setToDoList(prevList => prevList.filter((i) => i.id !== id));
+    const editCurrTodo = (item) => setCurrentToDo(item);
+
+    /*     
+        //I need a proper method that gets me the nextTodo and sets it as currentTodo
+
+        So I can do:
+    const onNext = () => {
+        stop();
+        if (itemsCtx.hasNext) {
+            const nextToDo = itemsCtx.getNext();
+            const startTime = start(nextTask.avgTime);
+            itemsCtx.editCurrTodo({
+                ...nextToDo,
+                startTime,
+            });
+        }
+        itemsCtx.addAsDone({
+            ...currentToDo,
+            startTime: timer.startTime,
+            endTime: timer.endTime,
+            duration: timer.duration,
+            isOnTime: timer.isOnTime,
+        });
+
+        //I still need to figure out how to do this.
+        //I really need a good interface for the itemsContext
+        itemsCtx.addAsCurrTodo();
+    }
+    */
 
     const addAsCurrTodo = () => {
         if (toDoList.length === 0) {
@@ -33,7 +62,7 @@ const ItemsProvider = ({ children }) => {
             return;
         }
 
-        setCurrentToDo(toDoList[0]);
+        setCurrentToDo({ ...toDoList[0], startTime: new Date() });
         setToDoList(prevList => prevList.slice(1));
     }
 
@@ -42,7 +71,6 @@ const ItemsProvider = ({ children }) => {
             setCurrentToDo(item);
             return;
         }
-        console.log('CurrentToDo Exists');
         addToDo(item);
     }
 
@@ -53,6 +81,7 @@ const ItemsProvider = ({ children }) => {
         currentToDo,
         addAsToDo,
         addAsCurrTodo,
+        editCurrTodo,
         addAsDone,
         addAsPriority,
         updateToDo,
@@ -75,4 +104,8 @@ export default ItemsProvider;
 /* 
 ALL of this needs to be refactored. I must create an interface that facilitates interacting with this
 without having to worry about all the implementation details. Order of updates, etc.
+
+
+hasNextTodo: () => toDoList.length > 0;
+
 */

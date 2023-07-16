@@ -30,9 +30,8 @@ export function getPercentageLeft(startTime, endTime, currentTime) {
 
 function formatSeconds(seconds) {
     const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor(seconds / 60);
+    const minutes = Math.floor((seconds % 3600) / 60);
     const secondsLeft = seconds % 60;
-
     return `${padNumber(hours)}:${padNumber(minutes)}:${padNumber(secondsLeft)}`;
 }
 
